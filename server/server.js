@@ -20,13 +20,9 @@ server.on('connection', (client) => {
   client.on('data', (data) => {
     if(data.includes('send')) {
       // if send request is given to server. assign file name to variable
-      // let fileName = data.slice(5)
-      if(data.includes('file1')) {
-        client.write('looking for file1');
-      } else if (data.includes('file2')) {
-        client.write('looking for file2');
-      } else if (data.includes('file3')) {
-        client.write('looking for file3');
+      let fileName = data.slice(5)
+      if(fileName) {
+        client.write(`you are looking for the file ${fileName}`)
       } else {
         client.write('you want me to send what?')
       }
